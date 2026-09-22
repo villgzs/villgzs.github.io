@@ -2,6 +2,7 @@
 
 [musllinux](https://villgzs.github.io/musllinux/)  
 [musllinux-index](https://villgzs.github.io/musllinux-index/)  
+[wheels32bit](https://github.com/villgzs/wheels32bit)
 
 [**Helló Ádám!**](https://www.markdownguide.org/basic-syntax/)
 
