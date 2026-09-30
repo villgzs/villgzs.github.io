@@ -4,7 +4,7 @@
 [musllinux-index](https://villgzs.github.io/musllinux-index/)  
 [wheels32bit](https://github.com/villgzs/wheels32bit)
 
-[**Helló Ádám!**](https://www.markdownguide.org/basic-syntax/)
+[**Helló Dávid!**](https://www.markdownguide.org/basic-syntax/)
 
 ```
 BASIC CODE
@@ -13,46 +13,3 @@ BASIC CODE
 ```
 [ASCIIflow](https://asciiflow.com/)
 
-```
-                                                                                                                              
-                                                                                                                              
-                     ┌─────────────┐                                                                                          
-                     │             │                                                                                          
-                     │             │                                                                                          
-                     │             │                                                                                          
-                     │             │                                                                                          
-                     │             │                                                                                          
-                     │             │                      ┌────────────────────────────┐                                      
-                     │             │    UTCA              │                            │                                      
-                     │             │─────────────────────►│  KÁBELMODEM                │                                      
-  ─────────────────► │             │                      │           POERTFWD         │                                      
-                     │             │                      └─────────────┬──────────────┘                                      
-                     │             │                                    │                                                     
-                     │             │                                    │                                                     
-                     │             │                                    │                                                     
-                     │             │                                    ├────────────────────►                                
-                     │             │                                    │                                                     
-                     └─────────────┘                                    │                                                     
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        ├────────────────────►                                
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        ┼────────────────────►                                
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        │                                                     
-                                                                        │                       192.168.0.xxx                 
-                                                                        │                     ┌────────────────────────┐      
-                                                                        │       PORTFWD CÍM   │                        │      
-                                                                        └─────────────────────│                        │      
-                                                                                              │                        │      
-                                                                                              └────────────────────────┘      
-                                                                                                                              
-                                                                                                                              
-                                                                                                                              
-                                                                                                                              
-```
