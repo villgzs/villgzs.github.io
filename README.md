@@ -4,7 +4,7 @@
 [musllinux-index](https://villgzs.github.io/musllinux-index/)  
 [wheels32bit](https://github.com/villgzs/wheels32bit)
 
-[**Helló Dávid!**](https://www.markdownguide.org/basic-syntax/)
+[**MarkDownGuide**](https://www.markdownguide.org/basic-syntax/)
 
 ```
 BASIC CODE
