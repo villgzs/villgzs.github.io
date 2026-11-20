@@ -63,3 +63,56 @@ sudo udevadm trigger
 - Ha csak egyszeri hullámforma-mentés kell, az `owondump` a legegyszerűbb. Ha programozni is szeretnél (pl. Pythonból), a LibOwonPds praktikusabb.
 
 Ha elakadsz a fordításnál vagy a futtatásnál, írd meg a pontos hibaüzenetet, és segítek.
+
+
+---
+
+A hiba oka szinte biztosan az, hogy a **kernel** `usb_serial_simple` drivere automatikusan lefoglalja az eszközt (5345:1234).  
+Ezt a drivert 2025-ben adták hozzá a kernelhez (főleg az újabb HDS sorozathoz), és sajnos ugyanezt a VID:PID-t használja a te PDS6062T-d is.
+
+### Gyors megoldás (ideiglenes)
+
+Próbáld ki ezt:
+
+```bash
+sudo modprobe -r usb_serial_simple
+```
+
+Utána azonnal futtasd újra:
+
+```bash
+./owondump
+```
+
+Ha sikerül, akkor tényleg ez volt a gond.
+
+### Tartósabb megoldás – udev szabály
+
+Hozz létre egy szabályt, ami automatikusan leválasztja a kernel drivert, amikor az oszcilloszkóp csatlakozik:
+
+```bash
+sudo tee /etc/udev/rules.d/99-owon-unbind.rules << 'EOF'
+# Owon PDS / HDS / VDS közös VID:PID
+ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="5345", ATTR{idProduct}=="1234", MODE="0660", GROUP="plugdev"
+ACTION=="bind", DRIVER=="usb_serial_simple", ATTRS{idVendor}=="5345", ATTRS{idProduct}=="1234", RUN+="/bin/sh -c 'echo %k > /sys/bus/usb/drivers/usb_serial_simple/unbind'"
+EOF
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+Ezután húzd ki és dugd vissza az oszcilloszkópot, majd próbáld újra az `./owondump`-ot.
+
+### Ellenőrzés
+
+Ha kíváncsi vagy, hogy tényleg a `usb_serial_simple` foglalja-e le:
+
+```bash
+lsusb -t
+# vagy
+dmesg | tail -30
+```
+
+Látnod kellene valami ilyesmit: `usb_serial_simple ... owon converter now attached to ttyUSB0`
+
+Mondd el, mi történt a `modprobe -r` után!
